@@ -1,0 +1,1712 @@
+@use './color' as c;
+@use './animations' as a;
+// @use './media' as m;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html {
+	font-size: 10px;
+    scroll-behavior: smooth;
+}
+body {
+	background-color: #1c1c1c;
+	font-family: 'Poppins', sans-serif;
+	background-color: c.$pure-white;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+p {
+	font-size: 1.8rem;
+	color: c.$dark;
+}
+.prefix {
+	font-size: 2.8rem;
+	color: c.$half-dark;
+	text-transform: uppercase;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 90%;
+	max-width: 1300px;
+}
+
+// NAV
+
+nav {
+	position: fixed;
+	width: 100%;
+	background-color: c.$pure-white;
+	max-height: 10000px;
+	box-shadow: 0 0 15px #1c1c1c35;
+	z-index: 999;
+
+	.burger-icon {
+		display: none;
+	}
+
+	.nav-bar {
+		display: flex;
+		justify-content: space-between;
+		height: 100%;
+
+		.logo {
+			height: 100%;
+			position: relative;
+			a {
+				position: relative;
+				display: block;
+				width: 100px;
+				padding: 0.3em 0.2em;
+				font-weight: bold;
+				font-size: 4rem;
+
+				.logo-img{
+					width: 197px;
+					height: 67px;
+					background-image: url(../img/marciniaklogo.png);
+					background-size: cover;
+				}
+			}
+		}
+		.menu {
+			position: relative;
+			margin-top: 2.2em;
+
+			a {
+				position: relative;
+				display: inline-block;
+				padding: 0.5em 0.6em;
+				text-decoration: none;
+				text-transform: capitalize;
+				color: c.$dark;
+				font-size: 2rem;
+
+				&::after {
+					position: absolute;
+					content: '';
+					top: 90%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 0%;
+					height: 0.17em;
+					background-color: c.$main-color;
+					transition: all 0.4s;
+				}
+				&:hover::after {
+					width: 60%;
+					height: 0.17em;
+				}
+			}
+			.contact {
+				margin-left: 2em;
+				padding: 0.5em 1em;
+				background-color: c.$main-color;
+				border-radius: 1.5em;
+				color: c.$pure-white;
+				transition: padding 0.3s;
+
+				i {
+					padding-right: 0.5em;
+					font-size: 0rem;
+					transition: all 0.3s linear;
+					opacity: 1;
+				}
+				&:hover {
+					padding: 0.5em 1.5em 0.5em 1.2em;
+				}
+				&:hover > i {
+					font-size: 1.8rem;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+// HEADER
+
+.header {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	transition: all 0.3s;
+
+	.header-arrow {
+		position: absolute;
+		top: 87%;
+		left: 86%;
+		width: 5em;
+		height: 6em;
+		border: 3px solid c.$pure-white;
+		border-radius: 2.2em;
+		// box-shadow: 0 0 25px #00000059;
+		cursor: pointer;
+		transition: height 0.2s linear;
+		z-index: 100;
+
+		i {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 3rem;
+			color: c.$pure-white;
+		}
+		&:hover {
+			height: 7em;
+		}
+	}
+
+	.header-nav {
+		position: absolute;
+		margin: 0 4%;
+		top: 90%;
+		left: 0%;
+		height: 50px;
+		width: 1200px;
+		text-align: left;
+		z-index: 10;
+
+		button {
+			padding: 0 3em 0.2em 0;
+			margin-left: 0.7em;
+			background: none;
+			font-size: 2.8rem;
+			// color: c.$pure-white;
+			color: #fff;
+			border: none;
+			border-bottom: 0.1em solid c.$pure-white;
+			text-shadow: 0 0 15px c.$dark;
+			transition: all 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				padding-right: 5em;
+				// font-size: 2.8rem;
+				letter-spacing: 0.05em;
+			}
+		}
+	}
+	.slaider {
+		position: relative;
+		padding: 18em 0;
+		width: 100%;
+		height: 100%;
+		animation: fadeIn 0.6s linear;
+		.text {
+			position: relative;
+			height: 100%;
+
+			.heding-area {
+				position: relative;
+				width: 100%;
+				height: 25em;
+				line-height: 12em;
+				overflow: hidden;
+				h1 {
+					position: absolute;
+					text-transform: capitalize;
+					font-size: 11rem;
+					font-weight: bold;
+					color: c.$pure-white;
+					// text-shadow: 0 0 15px c.$dark;
+					animation: heder-heding 1.8s linear;
+				}
+				h2 {
+					position: absolute;
+					text-transform: capitalize;
+					font-size: 11rem;
+					font-weight: bold;
+					color: c.$pure-white;
+					// text-shadow: 0 0 15px c.$dark;
+					animation: heder-heding 2.2s linear;
+				}
+			}
+
+			.text-area {
+				position: relative;
+				margin-top: 2em;
+				width: 50%;
+				height: 20em;
+				overflow: hidden;
+
+				p {
+					position: absolute;
+					padding-left: 0.2em;
+					font-size: 1.8rem;
+					// color: #ebedea;
+					color: c.$pure-white;
+					// text-shadow: 0 0 10px c.$dark;
+					opacity: 0;
+					animation: heder-text 1.2s linear 1.5s forwards;
+				}
+			}
+		}
+	}
+	.slaider-one {
+		width: 100%;
+		height: 100%;
+		background-image: url(../img/bhp-large.jpg);
+        background-size: cover;
+		transition: all 0.3s;
+		z-index: 0;
+		&::after {
+			position: absolute;
+			top: 0;
+			content: '';
+			width: 100%;
+			height: 100%;
+			background: rgb(2, 0, 36);
+			background: linear-gradient(
+				0deg,
+				rgba(21, 37, 71, 0.5) 0%,
+				rgba(29, 53, 87, 0.7) 100%
+			);
+			z-index: -1;
+		}
+	}
+
+	.slaider-two {
+		width: 100%;
+		height: 100%;
+		background-image: url(../img/montage-large.jpg);
+        background-size: cover;
+		transition: all 0.3s;
+		z-index: 0;
+		&::after {
+			position: absolute;
+			top: 0;
+			content: '';
+			width: 100%;
+			height: 100%;
+			background: rgb(2, 0, 36);
+			background: linear-gradient(
+				0deg,
+				rgba(21, 37, 71, 0.3) 0%,
+				rgba(29, 53, 87, 0.8) 100%
+			);
+			z-index: -1;
+		}
+	}
+
+	.slaider-three {
+		width: 100%;
+		height: 100%;
+		background-image: url(../img/tools-small.jpg);
+		background-size: cover;
+		transition: all 0.3s;
+		z-index: 0;
+		&::after {
+			position: absolute;
+			top: 0;
+			content: '';
+			width: 100%;
+			height: 100%;
+			background: rgb(2, 0, 36);
+			background: linear-gradient(
+				0deg,
+				rgba(21, 37, 71, 0.3) 0%,
+				rgba(29, 53, 87, 0.8) 100%
+			);
+			z-index: -1;
+		}
+	}
+}
+
+// ABAOUT
+
+.abaout {
+	position: relative;
+	padding: 12em 0;
+	width: 100%;
+	height: 70em;
+	background-color: c.$pure-white;
+
+	.abaout-content {
+		display: flex;
+		height: 43em;
+
+		&__photo-box {
+			position: relative;
+			width: 50%;
+			height: 100%;
+			padding: 1.5em 6em 1.5em 0em;
+			z-index: 1;
+
+			&--img {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background-image: url(../img/pexels-shvets-production-8929190.jpg);
+				background-position: center;
+				background-size: cover;
+				z-index: 100;
+			}
+			&::after {
+				position: absolute;
+				content: '';
+				top: 0%;
+				left: -5%;
+				width: 80%;
+				height: 100%;
+				background-color: c.$main-color;
+                opacity: 0.8;
+				z-index: -1;
+			}
+		}
+		&__text-box {
+			padding: 1.5em;
+			width: 50%;
+			height: 100%;
+
+			h2 {
+				font-size: 4.5rem;
+				color: c.$main-color;
+				margin-bottom: 0.5em;
+			}
+
+			.btn-bar {
+				margin-top: 4em;
+
+				.abaout-btn {
+					padding: 0.5em 1em;
+					margin-right: 2em;
+					background: none;
+					border-radius: 1.5em;
+					font-size: 2rem;
+					cursor: pointer;
+
+					&__one {
+						border: none;
+						color: c.$main-color;
+						transition: all 0.3s;
+
+						i {
+							padding-left: 0.5em;
+							font-size: 0rem;
+							transition: all 0.3s linear;
+							opacity: 1;
+						}
+						&:hover {
+							padding: 0.5em 1.2em 0.5em 1.2em;
+							border: 3px solid c.$main-color;
+						}
+						&:hover > i {
+							font-size: 2rem;
+							opacity: 1;
+						}
+					}
+					&__two {
+						border: none;
+						color: c.$pure-white;
+						background-color: c.$main-color;
+						transition: all 0.3s;
+
+						i {
+							padding-left: 0.5em;
+							font-size: 0rem;
+							color: c.$pure-white;
+							transition: all 0.3s linear;
+							opacity: 1;
+						}
+						&:hover {
+							padding: 0.5em 1.2em 0.5em 1.2em;
+						}
+						&:hover > i {
+							font-size: 2rem;
+							opacity: 1;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// COOPERATION
+
+.cooperation {
+	position: relative;
+	padding: 8em 0;
+	width: 100%;
+	min-height: 40em;
+	background-color: c.$dark-white;
+
+	.cooperation-bar {
+		position: relative;
+		padding: 1em;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: 200px;
+
+		&__box {
+			position: relative;
+			width: 30%;
+			height: 100%;
+
+			&--one {
+				position: relative;
+				background-image: url(../img/Logo\ poziom\ PNG.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				margin-top: 4em;
+				cursor: pointer;
+				&::after{
+					display: none;
+					position: absolute;
+					top: 80%;
+					left: 7%;
+					content: 'Firma SG Metal specjalizuje się w produkcji wysokiej jakości rusztowań klinowych i kontenerów';
+					padding: 0.5em;
+					width: 300px;
+					height: 80px;	
+					background-color: #fff;
+					border: 1px solid c.$main-color;
+					border-radius: 0.2em;
+					font-size: 1.6rem;
+					z-index: 100;
+					transition: all 0.3s;
+					animation: fadeIn 0.3s;
+					}
+				&:hover::after{
+					display: inline;
+				}
+			}
+			&--two {
+				background-image: url(../img/1200px-POL_województwo_wielkopolskie_COA.svg.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				margin-top: 2em;
+				margin-left: 15%;
+				&::after{
+					display: none;
+					position: absolute;
+					top: -60%;
+					left: -22%;
+					content: 'Wojewódzki Urząd Pracy w Poznaniu oferuje szeroki zakres usług dla osób poszukujących pracy.';
+					padding: 0.5em;
+					width: 300px;
+					height: 80px;	
+					background-color: #fff;
+					border: 1px solid c.$main-color;
+					border-radius: 0.2em;
+					font-size: 1.6rem;
+					z-index: 100;
+					transition: all 0.3s;
+					animation: fadeIn 0.3s;
+					}
+				&:hover::after{
+					display: inline;
+				}
+			}
+			&--three {
+				background-image: url(../img/logo_piap_poziom-1.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				margin-top: 4em;
+				&::after{
+					display: none;
+					position: absolute;
+					top: -66%;
+					left: 0%;
+					content: 'Instytut Łukasiewicz to renomowana instytucja badawczo-rozwojowa, która prowadzi innowacyjne projekty naukowe i technologiczne.';
+					padding: 0.5em;
+					width: 300px;
+					height: 94px;	
+					background-color: #fff;
+					border: 1px solid c.$main-color;
+					border-radius: 0.2em;
+					font-size: 1.6rem;
+					z-index: 100;
+					transition: all 0.3s;
+					animation: fadeIn 0.3s;
+					}
+				&:hover::after{
+					display: inline;
+				}
+			}
+		}
+	}
+}
+
+// NEWS
+
+.news {
+	position: relative;
+	padding: 12em 0;
+	width: 100%;
+	min-height: 900px;
+	max-height: 1900px;
+	background-color: c.$pure-white;
+
+	.news-bar {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		padding: 1em;
+		width: 100%;
+		height: 65em;
+
+		.card {
+			position: relative;
+			width: 32%;
+			height: 100%;
+            border-radius: 0.2em;
+            overflow: hidden;
+
+			&__img {
+				position: relative;
+				width: 100%;
+				height: 45%;
+				cursor: pointer;
+				overflow: hidden;
+				transition: filter 0.3s;
+				z-index: 1;
+
+				.magnifier {
+					opacity: 0;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 80px;
+					height: 80px;
+					border-radius: 50%;
+					background-color: c.$main-color;
+					box-shadow: 0 0 30px c.$main-color;
+					transition: opacity 0.3s;
+					i {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						color: c.$pure-white;
+						font-size: 3.8em;
+					}
+				}
+
+				&--one {
+					position: relative;
+					background-image: url(../img/montage-large.jpg);
+					background-size: cover;
+				}
+
+				&--two {
+					background-image: url(../img/board-2450236_640.jpg);
+					background-size: cover;
+				}
+
+				&--three {
+					background-image: url(../img/liceum.jpeg);
+					background-size: cover;
+				}
+
+				//  &:hover{
+				//     filter: blur(1.5px);
+				//  }
+				&:hover > .magnifier {
+					opacity: 1;
+					filter: blur(0px);
+				}
+			}
+
+			h3 {
+				margin: 0.5em;
+				font-size: 2.8rem;
+				color: c.$main-color;
+			}
+			p {
+				margin: 0 0.8em;
+				font-size: 1.6rem;
+			}
+			button {
+				position: absolute;
+				top: 90%;
+				padding: 0.5em 0.7em;
+				margin-right: 2em;
+				background: none;
+				font-size: 2rem;
+				border: none;
+				color: c.$main-color;
+				cursor: pointer;
+				transition: all 0.3s;
+
+				a {
+					text-decoration: none;
+					color: c.$main-color;
+				}
+
+				i {
+					padding-left: 0.5em;
+					font-size: 0rem;
+					transition: all 0.3s linear;
+					opacity: 1;
+				}
+				&:hover {
+					padding: 0.5em 1.2em 0.5em 1.2em;
+					font-size: 2.2rem;
+				}
+				&:hover i {
+					font-size: 1.8rem;
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	.prefix {
+		text-align: left;
+        padding-left: 0.5em;
+        margin-bottom: 1em;
+	}
+}
+
+// Serice
+
+.service {
+	position: relative;
+	padding: 12em 0;
+	width: 100%;
+	// min-height: 900px;
+	max-height: 19000px;
+	background-color: c.$dark-white;
+
+	.prefix {
+		color: c.$main-color;
+        text-align: left;
+        padding-left: 0.5em;
+        margin-bottom: 1em;
+      
+            
+	}
+
+	.service-content {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: 1em;
+		width: 100%;
+		min-height: 56em;
+		max-height: 1056em;
+
+		&__box-one {
+			margin-top: 9em;
+			width: 100%;
+			height: 100%;
+
+			.acordeon-box {
+				width: 100%;
+
+				.acordeon-title {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin: 0.5em 0em;
+					padding: 0.9em 0.5em;
+					width: 100%;
+					font-family: 'Poppins', sans-serif;
+					background: none;
+					border: none;
+					border-bottom: 2px solid #2125290a;
+					text-align: left;
+					cursor: pointer;
+					transition: all 0.3s;
+
+					p {
+						font-size: 2.5rem;
+						color: c.$dark;
+						// transition: all 0.3s;
+					}
+
+					i {
+						font-size: 2.5rem;
+						padding: 0.1em 1em 0em;
+						text-align: right;
+						color: c.$main-color;
+						transition: all 0.3s;
+					}
+					&:hover {
+						background-color: #457b9d1e;
+					}
+					&:hover p {
+						color: c.$main-color;
+					}
+					&:hover i {
+						padding: 0.1em 2.5em 0em;
+						transform: rotate(90deg);
+					}
+				}
+				.acordeon-content {
+					padding: 0.6em 2.5em 3em 0.6em;
+					animation: fadeIn 0.4s linear;
+
+					p {
+						color: c.$half-dark;
+						font-size: 1.8rem;
+					}
+				}
+			}
+		}
+		&__box-two {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+
+			.service-row {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+
+				.service-bar {
+                    position: relative;
+					margin: 1.5em 0;
+					padding: 1em;
+					width: 49.5%;
+                    border-radius: 0.3em;
+					height: 35em;
+					background-color: c.$pure-white;
+					transition: all 0.3s;
+                    border-radius: 0.2em;
+                    overflow: hidden;
+
+                    &::after{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background: rgb(2,0,36);
+                        background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(27,48,82,0.5) 0%, rgba(29,53,87,0.8)63%);
+                        // background-color: c.$main-color;
+                        opacity: 0.7;
+                        transition: all 0.5s;
+                        z-index: -2;
+                    }
+
+                    &__one{
+                        background-image: url(../img/bhp-small.jpg);
+                        z-index: 0;
+
+                        .service-bar-title {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            z-index: 10;
+    
+                            h3 {
+                                padding: 0.2em 0.5em 0.2em 0.5em;
+                                font-size: 5.5rem;
+                                color: c.$pure-white;
+                            }
+                        }
+    
+                        
+                    }
+                    &__two{
+                        background-image: url(../img/doradztwo-w-zakresie-BHP.jpg);
+                        background-size: cover;
+                        z-index: 0;
+
+                        .service-bar-title {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            z-index: 10;
+    
+                            h3 {
+                                padding: 0.4em 0.5em 0.2em 0.5em;
+                                font-size: 4.5rem;
+                                color: c.$pure-white;
+                            }
+                        }
+                    }
+                    &__three{
+                        background-image: url(../img/hook-1943675_640.jpg);
+                        background-size: cover;
+                        z-index: 0;
+
+                        .service-bar-title {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            z-index: 10;
+    
+                            h3 {
+                                padding: 0.2em 0.5em 0.2em 0.5em;
+                                font-size: 4.5rem;
+                                color: c.$pure-white;
+
+                            }
+                        }
+                    }
+                    &__for{
+                        background-image: url(../img/people-4809678_1280.jpg);
+                        background-size: cover;
+                        z-index: 0;
+
+                        .service-bar-title {
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            z-index: 10;
+    
+                            h3 {
+                                padding: 0.2em 0.5em 0.2em 0.5em;
+                                font-size: 4.5rem;
+                                color: c.$pure-white;
+                            }
+                        }
+                    }
+                    
+					.service-bar-text {
+                        font-size: 1.6rem;
+                        margin-top: 60%;
+						padding: 0.7em 1em 0.2em 2em;
+                        transition: all 0.7s;
+                        z-index: 12;
+                        
+						ul {
+                            color: c.$pure-white;
+							font-size: 1.8rem;
+                            text-shadow: 0 0 5px c.$dark;
+						}
+                        p{
+                            color: c.$pure-white;
+                            text-shadow: 0 0 5px c.$dark;
+                        }
+					}
+
+                    &:hover .service-bar-text{
+                        margin-top: 0%;
+                    }
+                    &:hover::after{
+                         opacity: 1;
+                    }
+				}
+			}
+		}
+	}
+}
+
+// CERT..
+
+.certificate{
+    position: relative;
+	padding: 20em 0 1em ;
+	width: 100%;
+	min-height: 700px;
+	background-color: c.$pure-white;
+
+    .certificate-row{
+        display: flex;
+        width: 100%;
+
+
+        .doc{
+            width: 40%;
+            margin: 0 auto;
+            height: 60em;
+
+            &__one{
+                width: 100%;
+                background-image: url(../img/Potwierdzenie\ -\ IMBiGS\ -\ 01-04-2017.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__two{
+                width: 100%;
+                background-image: url(../img/Wpis\ do\ WUP\ Poznań.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__three{
+                width: 100%;
+                background-image: url(../img/Certyfikat_mini.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__for{
+                width: 100%;
+                background-image: url(../img/opal-mini.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__fifth{
+                width: 100%;
+                background-image: url(../img/energorem-mini.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__six{
+                width: 100%;
+                background-image: url(../img/EMAT-mini.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__seventh{
+                width: 100%;
+                background-image: url(../img/bhp_emat-mini.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+            &__eighth{
+                width: 100%;
+                background-image: url(../img/electro_mont-mini.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+        .doc-text{
+            margin-bottom: 10em;
+            width: 100%;
+        }
+    }
+
+}
+.policy-text{
+	color: c.$dark;
+	h2{
+		font-size: 3rem;
+	}
+	h3{
+		font-size: 2.2rem;
+	}
+	p{
+		font-size: 1.8rem;
+	}
+}
+
+// THX
+
+.thx-box{
+	padding-top: 20em;
+	height: 70em;
+	h2{
+		font-size: 8rem;
+		color: c.$main-color;
+	}
+	p{
+		margin-top: 1em;
+		margin-bottom: 2em;
+		font-size: 2.2rem;
+	}
+	a{
+		font-size: 2rem;
+		color: c.$main-color;
+		font-weight: bold;
+	}
+	.squer{
+		width: 20em;	
+		height: 20em;
+		background-color: lime;
+	}
+}
+
+// CONTACT
+
+.info {
+	position: relative;
+	padding: 12em 0;
+	width: 100%;
+	min-height: 900px;
+	max-height: 1900px;
+	background-color: c.$pure-white;
+
+    iframe{
+        width: 100%;
+        padding: 1em;
+        border-radius: 0.2em;
+    }
+
+	.info-content {
+		position: relative;
+		display: flex;
+		padding: 1em;
+		width: 100%;
+
+		.form-contact {
+			display: flex;
+			flex-direction: column;
+			padding: 1em 3em;
+			width: 60%;
+			height: 500px;
+			// background-color: rgba(0, 255, 0, 0.299);
+
+			form {
+				.input-box-one {
+					position: relative;
+					margin: 3em 0;
+
+					input {
+						padding: 0.5em;
+						width: 100%;
+						font-size: 1.8rem;
+						background: none;
+						color: c.$dark;
+						border: 0.1em solid c.$main-color;
+						border-radius: 0.2em;
+
+						&:focus {
+							outline: none;
+							border: 0.12em solid c.$main-color;
+						}
+
+						&:focus ~ label {
+							transform: translateY(-78%);
+							padding: 0 0.3em;
+						}
+					}
+					label {
+						position: absolute;
+						top: 18%;
+						left: 2%;
+						font-size: 1.8rem;
+						font-family: 'Popins' sans-serif;
+						color: c.$main-color;
+						background-color: c.$pure-white;
+						transition: all 0.3s;
+					}
+				}
+
+				.input-box-two {
+					position: relative;
+					margin: 3em 0;
+
+					textarea {
+						padding: 0.5em;
+						min-width: 100%;
+						max-width: 100%;
+						min-height: 10em;
+						max-height: 13em;
+						font-size: 1.8rem;
+						background: none;
+						border: 0.1em solid c.$main-color;
+						border-radius: 0.2em;
+
+						&:focus {
+							outline: none;
+							border: 0.12em solid c.$main-color;
+						}
+
+						&:focus ~ label {
+							transform: translateY(-78%);
+							padding: 0 0.3em;
+						}
+					}
+					label {
+						position: absolute;
+						top: 3%;
+						left: 1.8%;
+						font-size: 1.8rem;
+						font-family: 'Popins' sans-serif;
+						color: c.$main-color;
+						background-color: c.$pure-white;
+						transition: all 0.3s;
+					}
+				}
+			}
+
+			.submit-btn {
+				width: 100%;
+				text-align: center;
+				font-size: 1.8rem;
+				padding: 0.5em 0em;
+				border: none;
+				border-radius: 0.2em;
+				background-color: c.$main-color;
+				color: c.$pure-white;
+				font-family: 'Popins' sans-serif;
+				cursor: pointer;
+				transition: all 0.3s;
+
+				&:hover {
+					background-color: #13243c;
+				}
+			}
+		}
+
+		.info-contact {
+			position: relative;
+			width: 40%;
+			height: 500px;
+			background-color: c.$main-color;
+			overflow: hidden;
+            border-radius: 0.2em;
+			z-index: 0;
+
+            .bg-icon{
+                position: absolute;
+                top: 30%;
+                font-size: 45em;
+                color: c.$accent;
+                opacity: 0.2;
+                z-index: -1;
+                transform: rotate(340deg);
+            }
+			.info-contact-text {
+				padding: 1.5em;
+				z-index: 20;
+
+
+				h2 {
+					margin: 0.3em 0;
+					color: c.$pure-white;
+					font-size: 5.5rem;
+				}
+				p {
+					color: c.$pure-white;
+				}
+                .icon-bar{
+                    margin: 3em 0em;
+                    p{
+                        font-size: 2.2rem;
+                    }
+                    i{
+                        padding: 0.5em 0.4em 0.5em 0em;
+                        font-size: 2.8rem;
+                    }
+                }
+                
+			}
+		}
+	}
+}
+
+// FOOTER
+
+.footer{
+    position: relative;
+	padding: 12em 0 2em;
+	width: 100%;
+	min-height: 50em;
+	background-color: c.$main-color;
+
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+
+        .logo{
+            margin: 0 0 5em 0;
+            width: 100%;
+            height: 10em;
+            background-image: url(../img/marcinialogobiałe.png);
+			background-size: contain;
+			background-repeat: no-repeat;
+        }
+
+
+        a{
+            font-size: 2rem;
+            text-decoration: none;
+            color: c.$pure-white;
+            padding: 0.5em 0;
+        }
+
+
+        
+    }
+    .autor-bar{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10em;
+
+        a{
+            text-decoration: none;
+            font-size: 1.8em;
+            color: c.$pure-white;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    nav {
+        .nav-bar {
+			position: relative;
+            display: flex;
+            flex-direction: column;
+
+			.logo{
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			
+				.burger-icon{
+					display: block;
+					height: 100%;
+					position: relative;
+					cursor: pointer;
+					right: 0;
+					padding: 0.3em 0.5em;
+					font-size: 3.5rem;
+					text-align: right;
+					background: none;
+					border: none;
+					color: c.$main-color;
+					transition: border 0.3s;
+
+					&:hover{
+						border: 1px solid c.$main-color;
+						border-radius: 0.1em;
+						border-color: c.$main-color;
+					}
+				}
+			
+			}
+
+				
+
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+			    margin-top: 0.2em;
+                width: 40%;
+                height: 0em;
+                overflow: hidden;
+				transition: all .3s;
+
+                 a {
+                    transition: all 0.4s;
+
+				        &::after {
+					        display: none;
+				        }
+				        &:hover {
+                            font-size: 2.2rem;
+				    }
+			    }
+
+                .contact {
+                    margin: 1em 0em ;
+                    margin-left: 0em;
+                    padding: 0.5em 1em;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 992px){
+	.header {
+		.header-arrow {
+			top: 87%;
+			left: 86%;
+	
+			i {
+				font-size: 2.8rem;
+			}
+			&:hover {
+				height: 7em;
+			}
+		}
+	
+		.header-nav {
+			margin: 0 4%;
+	
+			button {
+				font-size: 2.6rem;
+			}
+		}
+		.slaider {
+			padding: 20em 0;
+			.text {
+				.heding-area {
+					height: 20em;
+					line-height: 8em;
+					h1 {
+						font-size: 9rem;
+					}
+					h2 {
+						font-size: 9rem;
+					}
+				}
+	
+				.text-area {
+					p {
+						font-size: 1.7rem;		
+					}
+				}
+			}
+		}
+		
+	}
+	.abaout {
+		height: 75em;	
+		.abaout-content {
+			display: flex;
+			height: 43em;
+		}
+	}
+	.service {
+		max-height: 19000px;		
+		.service-content {
+	
+			&__box-two {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+	
+				.service-row {
+					display: flex;
+					flex-direction: column;
+					width: 100%;
+	
+					.service-bar {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+	
+	.info{
+	.info-content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		.form-contact {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.info-contact {
+			width: 100%;
+			height: 40em;
+		}
+	}
+}
+}
+@media (max-width:900px){
+	.abaout {
+		height: 83em;	
+		.abaout-content {
+			p{
+				font-size: 1.7rem;
+			}
+		}
+	}
+	.news {
+		width: 100%;
+		height: 200em;
+	
+		.news-bar {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 100%;
+			height: 165em;
+	
+			.card {
+				margin-bottom: 5em;
+				width: 100%;
+				height: 65em;
+			}
+		}
+	}
+	.footer{
+	
+		.footer-content{
+			display: flex;
+			flex-direction: column;
+			width: 50%;
+			.logo{
+
+			}	
+			a{
+
+			}
+	
+		}
+		.autor-bar{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10em;
+	
+			a{
+				font-size: 1.4em;
+			}
+		}
+	
+	}
+}
+@media (max-width: 768px){
+	.header {
+		.header-arrow {
+			display: none;
+			top: 87%;
+			left: 86%;
+	
+			i {
+				font-size: 2.8rem;
+			}
+			&:hover {
+				height: 7em;
+			}
+		}
+	
+		.header-nav {
+			margin: 0 4%;
+	
+			button {
+				font-size: 2.6rem;
+			}
+		}
+		.slaider {
+			padding: 20em 0;
+			.text {
+				.heding-area {
+					height: 20em;
+					line-height: 8em;
+					h1 {
+						font-size: 9rem;
+					}
+					h2 {
+						font-size: 9rem;
+					}
+				}
+	
+				.text-area {
+					p {
+						font-size: 1.7rem;		
+					}
+				}
+			}
+		}
+		
+	}
+	.abaout {
+		width: 100%;
+		height: 105em;	
+		.abaout-content {
+			display: flex;
+			flex-direction: column;
+			height: 43em;
+	
+			&__photo-box {
+				width: 100%;
+				height: 70em;
+				padding: 1.5em 0em 1.5em 0em;
+
+				&--img {
+					width: 100%;
+					height: 40em;
+				}
+			}
+			&__text-box {
+				margin-top: 4em;
+				padding: 1.5em;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	.certificate{
+		.certificate-row{
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.cooperation {
+	height: 80em;
+	.cooperation-bar {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 60em;
+		
+		&__box {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			&--one {
+				margin-left: 0%;
+				&:hover::after{
+					display: none;
+				}
+			}
+			&--two {
+				margin-left: 0%;
+				&:hover::after{
+					display: none;
+				}
+			}
+			&--three {
+				margin-left: 0%;
+				&:hover::after{
+					display: none;
+				}
+			}
+		}
+	}
+	}
+}
+@media (max-width: 630px){
+	.contact {	
+		i{
+			display: none;
+		}
+	}
+	.header {
+		.header-nav {
+			button {
+				font-size: 2.2rem;
+			}
+		}
+		.text-area {
+			margin-top: 8em;
+				p {
+					font-size: 1.6rem;		
+				}
+		}
+	}
+	.abaout {
+		width: 100%;
+		height: 110em;	
+	}
+	
+}
+@media (max-width: 530px){
+	.header {	
+		.header-nav {
+			button {
+				font-size: 2rem;
+			}
+		}
+		.slaider {
+			padding: 22em 0;
+			.text {
+				.text-area {
+					width: 80%;
+					p {
+						font-size: 1.6rem;		
+					}
+				}
+			}
+		}
+		
+	}
+	.abaout {
+		height: 120em;	
+	}
+}
+@media (max-width: 450px){
+	.header {	
+		.header-nav {
+			button {
+				font-size: 1.8rem;
+			}
+		}
+	
+	}
+	.abaout {
+		height: 130em;	
+	}
+	.info{
+		.info-content {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+	
+			.info-contact {
+				width: 100%;
+				height: 50em;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.full-hight{
+	height: 100% !important;
+	animation: fadeIn 0.3s linear;
+}
+
+ .dispairing {
+	display: none;
+}
+
+.swap-dissapiring {
+	display: none;
+	opacity: 0;
+	animation: fadeOut 0.6s linear;
+}
+
+// Animations
+
+@keyframes heder-heding {
+	0% {
+		left: -10em;
+	}
+	100% {
+		left: 0px;
+	}
+}
+@keyframes heder-text {
+	0% {
+		top: -5em;
+		opacity: 1;
+	}
+	100% {
+		top: 0px;
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
